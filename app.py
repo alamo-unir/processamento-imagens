@@ -26,10 +26,10 @@ class SistemaProcessamentoApp:
         lbl_titulo.pack(pady=10)
         
         # Botões de Arquivo
-        btn_carregar = tk.Button(frame_controle, text="📁 Carregar Imagem 1", command=self.carregar_imagem, bg="#4CAF50", fg="white", font=("Arial", 10, "bold"), relief=tk.FLAT)
+        btn_carregar = tk.Button(frame_controle, text="Carregar Imagem 1", command=self.carregar_imagem, bg="#4CAF50", fg="white", font=("Arial", 10, "bold"), relief=tk.FLAT)
         btn_carregar.pack(fill=tk.X, padx=10, pady=2)
         
-        btn_salvar = tk.Button(frame_controle, text="💾 Salvar Processada", command=self.salvar_imagem, bg="#FF9800", fg="white", font=("Arial", 10, "bold"), relief=tk.FLAT)
+        btn_salvar = tk.Button(frame_controle, text="Salvar Processada", command=self.salvar_imagem, bg="#FF9800", fg="white", font=("Arial", 10, "bold"), relief=tk.FLAT)
         btn_salvar.pack(fill=tk.X, padx=10, pady=5)
         
         # Categorias de Operações
@@ -220,7 +220,7 @@ class SistemaProcessamentoApp:
             
         file_path = filedialog.askopenfilename(parent=self.root, title="Selecione a Imagem 2 para o Dissolve", filetypes=[("Imagens", "*.png *.jpg *.jpeg *.bmp")])
         if not file_path: return
-        img2 = cv2.imread(file_path, 0)
+        img2 = self.ler_imagem_unicode(file_path) #cv2.imread(file_path, 0)
         
         if img2.shape != self.img_original.shape:
             img2 = cv2.resize(img2, (self.img_original.shape[1], self.img_original.shape[0]))
@@ -267,7 +267,7 @@ class SistemaProcessamentoApp:
             
         file_path = filedialog.askopenfilename(parent=self.root, title="Selecione a Imagem 2 para o Dissolve Não-Uniforme", filetypes=[("Imagens", "*.png *.jpg *.jpeg *.bmp")])
         if not file_path: return
-        img2 = cv2.imread(file_path, 0)
+        img2 = self.ler_imagem_unicode(file_path) #cv2.imread(file_path, 0)
         
         if img2.shape != self.img_original.shape:
             img2 = cv2.resize(img2, (self.img_original.shape[1], self.img_original.shape[0]))
